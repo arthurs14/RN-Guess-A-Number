@@ -1,5 +1,7 @@
 # Guess a Number React Native Application
 
+React Native application where you guess a number and it will let you know if its close to what it has in mind. Good example of using firebase as the backend along with React Hooks and React embedded in. 
+
 ## Install
 
 1. Run 'npm install' to install dependencies
