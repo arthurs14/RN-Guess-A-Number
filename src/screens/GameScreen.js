@@ -21,6 +21,7 @@ const GameScreen = ({ userChoice }) => {
     generateNumber(1, 100, userChoice),
   );
 
+  // does not re-render
   const currentLow = useRef(1);
   const currentHigh = useRef(100);
 
@@ -34,9 +35,20 @@ const GameScreen = ({ userChoice }) => {
       return;
     }
 
+    // Checks to set new boundary to guess
     if (direction === 'lower') {
       currentHigh.current = currentGuess;
+    } else {
+      currentLow.current = currentGuess;
     }
+
+    const nextNumber = generateNumber(
+      currentLow.current,
+      currentHigh.current,
+      currentGuess,
+    );
+
+    setCurrentGuess(nextNumber);
   };
 
   return (
