@@ -10,6 +10,11 @@ const App = () => {
   const [number, setNumber] = useState();
   const [rounds, setRounds] = useState(0);
 
+  const newGame = () => {
+    setRounds(0);
+    setNumber(null);
+  };
+
   const startGame = selectedNum => {
     setNumber(selectedNum);
     setRounds(0);
@@ -24,7 +29,9 @@ const App = () => {
   if (number && rounds <= 0) {
     content = <GameScreen userChoice={number} onGameOver={gameOver} />;
   } else if (rounds > 0) {
-    content = <GameOverScreen rounds={rounds} userNumber={number} />;
+    content = (
+      <GameOverScreen rounds={rounds} userNumber={number} restart={newGame} />
+    );
   }
 
   return (
