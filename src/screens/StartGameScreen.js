@@ -49,7 +49,7 @@ const StartGameScreen = ({ startGame }) => {
   if (confirmed) {
     confirmedOutput = (
       <Card style={styles.summaryContainer}>
-        <Text>You Selected</Text>
+        <Text style={styles.text}>You Selected</Text>
         <NumberContainer>{selectedNumber}</NumberContainer>
         <Button title="START GAME" onPress={() => startGame(selectedNumber)} />
       </Card>
@@ -65,7 +65,7 @@ const StartGameScreen = ({ startGame }) => {
       <View style={styles.screen}>
         <Text style={styles.title}>Start a New Game!</Text>
         <Card style={styles.inputContainer}>
-          <Text>Select a Number</Text>
+          <Text style={styles.text}>Select a Number</Text>
           <Input
             style={styles.input}
             blurOnSubmit
@@ -108,6 +108,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 20,
     marginVertical: 10,
+    fontFamily: 'OpenSans-Bold',
   },
   inputContainer: {
     width: 300,
@@ -123,12 +124,18 @@ const styles = StyleSheet.create({
   button: {
     width: 100,
   },
+  buttonText: {
+    fontFamily: 'OpenSans-Bold',
+  },
   input: {
     width: 50,
     textAlign: 'center',
   },
   summaryContainer: {
     marginTop: 20,
+  },
+  text: {
+    fontFamily: 'OpenSans-Regular',
   },
 });
 

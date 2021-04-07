@@ -62,7 +62,7 @@ const GameScreen = ({ userChoice, onGameOver }) => {
 
   return (
     <View style={styles.screen}>
-      <Text>Opponent's Guess</Text>
+      <Text style={styles.text}>Opponent's Guess</Text>
       <NumberContainer>{currentGuess}</NumberContainer>
       <Card style={styles.buttonContainer}>
         <Button title="LOWER" onPress={() => nextGuessHandler('lower')} />
@@ -83,6 +83,9 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
     marginTop: 20,
     maxWidth: '80%',
+  },
+  text: {
+    fontFamily: 'OpenSans-Regular',
   },
 });
 
