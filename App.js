@@ -24,7 +24,7 @@ const App = () => {
   if (number && rounds <= 0) {
     content = <GameScreen userChoice={number} onGameOver={gameOver} />;
   } else if (rounds > 0) {
-    content = <GameOverScreen />;
+    content = <GameOverScreen rounds={rounds} userNumber={number} />;
   }
 
   return (
