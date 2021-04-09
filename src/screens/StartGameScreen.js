@@ -104,6 +104,7 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 10,
     alignItems: 'center',
+    backgroundColor: 'white',
   },
   title: {
     fontSize: 20,
@@ -130,6 +131,7 @@ const styles = StyleSheet.create({
   input: {
     width: 50,
     textAlign: 'center',
+    color: 'black',
   },
   summaryContainer: {
     marginTop: 20,
