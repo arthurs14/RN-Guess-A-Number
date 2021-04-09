@@ -36,7 +36,7 @@ const App = () => {
 
   return (
     <View style={styles.screen}>
-      <Header title="Numbers" />
+      <Header title="Number Game" />
       {content}
     </View>
   );
