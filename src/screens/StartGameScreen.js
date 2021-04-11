@@ -30,6 +30,7 @@ const StartGameScreen = ({ startGame }) => {
   };
 
   const confirmInputHandler = () => {
+    // eslint-disable-next-line radix
     const chosenNumber = parseInt(enteredValue);
     if (isNaN(chosenNumber) || chosenNumber <= 0 || chosenNumber > 99) {
       Alert.alert(

@@ -7,10 +7,15 @@ import BodyText from '../components/BodyText';
 const GameOverScreen = ({ rounds, userNumber, restart }) => {
   return (
     <View style={styles.screen}>
-      <TitleText>Game Over!</TitleText>
+      <TitleText>Game Done!</TitleText>
       <View style={styles.imageContainer}>
         <Image
-          source={require('../assets/success.png')}
+          // use for local images
+          // source={require('../assets/success.png')}
+          source={{
+            uri:
+              'https://tgr.scdn2.secure.raxcdn.com/images/wysiwyg/_article/istockphoto-485966046-612x612.jpg',
+          }}
           style={styles.image}
           resizeMode="cover"
         />
