@@ -35,9 +35,9 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   imageContainer: {
-    width: '80%',
+    width: 300,
     height: 300,
-    borderRadius: 200,
+    borderRadius: 150,
     borderWidth: 3,
     borderColor: 'black',
     overflow: 'hidden',
