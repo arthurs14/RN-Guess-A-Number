@@ -12,6 +12,7 @@ import {
 import Card from '../components/Card';
 import Input from '../components/Input';
 import NumberContainer from '../components/NumberContainer';
+import BodyText from '../components/BodyText';
 import Colors from '../../constants/colors';
 
 const StartGameScreen = ({ startGame }) => {
@@ -49,7 +50,7 @@ const StartGameScreen = ({ startGame }) => {
   if (confirmed) {
     confirmedOutput = (
       <Card style={styles.summaryContainer}>
-        <Text style={styles.text}>You Selected</Text>
+        <BodyText>You Selected</BodyText>
         <NumberContainer>{selectedNumber}</NumberContainer>
         <Button title="START GAME" onPress={() => startGame(selectedNumber)} />
       </Card>
@@ -71,7 +72,7 @@ const StartGameScreen = ({ startGame }) => {
             blurOnSubmit
             autoCapitalize="none"
             autoCorrect={false}
-            keyboardType={'number-pad'}
+            keyboardType="number-pad"
             maxLength={2}
             onChangeText={numberInputHandler}
             value={enteredValue}
