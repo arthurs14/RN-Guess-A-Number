@@ -1,8 +1,9 @@
 import React from 'react';
-import { View, StyleSheet, Button, Image } from 'react-native';
+import { Text, View, StyleSheet, Button, Image } from 'react-native';
 
 import TitleText from '../components/TitleText';
 import BodyText from '../components/BodyText';
+import Colors from '../../constants/colors';
 
 const GameOverScreen = ({ rounds, userNumber, restart }) => {
   return (
@@ -11,17 +12,23 @@ const GameOverScreen = ({ rounds, userNumber, restart }) => {
       <View style={styles.imageContainer}>
         <Image
           // use for local images
-          // source={require('../assets/success.png')}
-          source={{
-            uri:
-              'https://tgr.scdn2.secure.raxcdn.com/images/wysiwyg/_article/istockphoto-485966046-612x612.jpg',
-          }}
+          source={require('../assets/success.png')}
+          // use for web images
+          // source={{
+          //   uri:
+          //     'https://tgr.scdn2.secure.raxcdn.com/images/wysiwyg/_article/istockphoto-485966046-612x612.jpg',
+          // }}
           style={styles.image}
           resizeMode="cover"
         />
       </View>
-      <BodyText>{`Number of Rounds: ${rounds}`}</BodyText>
-      <BodyText>{`Number was: ${userNumber}`}</BodyText>
+      <View style={styles.resultContainer}>
+        <BodyText style={styles.resultText}>
+          Your phone needed <Text style={styles.highlight}>{rounds}</Text>{' '}
+          rounds to guess the number{' '}
+          <Text style={styles.highlight}>{userNumber}</Text>.
+        </BodyText>
+      </View>
       <View style={styles.button}>
         <Button title="Play Again" onPress={restart} />
       </View>
@@ -51,6 +58,20 @@ const styles = StyleSheet.create({
   image: {
     width: '100%',
     height: '100%',
+  },
+  resultContainer: {
+    marginHorizontal: 30,
+    marginVertical: 15,
+    // use either margin to width
+    //width: '80%',
+  },
+  resultText: {
+    textAlign: 'center',
+    fontSize: 20,
+  },
+  highlight: {
+    color: Colors.primary,
+    fontFamily: 'OpenSans-Bold',
   },
 });
 
