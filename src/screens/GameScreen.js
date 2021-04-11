@@ -77,6 +77,7 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 10,
     alignItems: 'center',
+    backgroundColor: 'white',
   },
   buttonContainer: {
     flexDirection: 'row',

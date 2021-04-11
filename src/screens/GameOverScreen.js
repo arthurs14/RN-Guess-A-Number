@@ -1,12 +1,14 @@
 import React from 'react';
 import { Text, View, StyleSheet, Button } from 'react-native';
 
+import BodyText from '../components/BodyText';
+
 const GameOverScreen = ({ rounds, userNumber, restart }) => {
   return (
     <View style={styles.screen}>
-      <Text style={styles.text}>Game Over!</Text>
-      <Text style={styles.text}>{`Number of Rounds: ${rounds}`}</Text>
-      <Text style={styles.text}>{`Number was: ${userNumber}`}</Text>
+      <BodyText>Game Over!</BodyText>
+      <BodyText>{`Number of Rounds: ${rounds}`}</BodyText>
+      <BodyText>{`Number was: ${userNumber}`}</BodyText>
       <View style={styles.button}>
         <Button title="Play Again" onPress={restart} />
       </View>
@@ -20,9 +22,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: 'white',
-  },
-  text: {
-    fontFamily: 'OpenSans-Regular',
   },
   button: {
     marginTop: 10,
