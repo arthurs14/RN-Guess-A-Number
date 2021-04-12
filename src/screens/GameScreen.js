@@ -1,9 +1,10 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { View, StyleSheet, Button, Alert } from 'react-native';
+import { View, StyleSheet, Alert } from 'react-native';
 
 import NumberContainer from '../components/NumberContainer';
 import Card from '../components/Card';
 import TitleText from '../components/TitleText';
+import MainButton from '../components/MainButton';
 
 const generateNumber = (min, max, exclude) => {
   min = Math.ceil(min);
@@ -67,8 +68,11 @@ const GameScreen = ({ userChoice, onGameOver }) => {
       <TitleText>Opponent's Guess</TitleText>
       <NumberContainer>{currentGuess}</NumberContainer>
       <Card style={styles.buttonContainer}>
-        <Button title="LOWER" onPress={() => nextGuessHandler('lower')} />
-        <Button title="GREATER" onPress={() => nextGuessHandler('greater')} />
+        <MainButton title="LOWER" onPress={() => nextGuessHandler('lower')} />
+        <MainButton
+          title="GREATER"
+          onPress={() => nextGuessHandler('greater')}
+        />
       </Card>
     </View>
   );
@@ -85,7 +89,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around',
     marginTop: 20,
-    maxWidth: '80%',
+    width: 400,
+    maxWidth: '90%',
   },
 });
 
