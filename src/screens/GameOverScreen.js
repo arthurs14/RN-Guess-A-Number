@@ -31,7 +31,7 @@ const GameOverScreen = ({ rounds, userNumber, restart }) => {
         </BodyText>
       </View>
       <View style={styles.button}>
-        <MainButton title="Play Again" onPress={restart} />
+        <MainButton onPress={restart}>Play Again</MainButton>
       </View>
     </View>
   );
