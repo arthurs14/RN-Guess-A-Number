@@ -5,6 +5,7 @@ import NumberContainer from '../components/NumberContainer';
 import Card from '../components/Card';
 import TitleText from '../components/TitleText';
 import MainButton from '../components/MainButton';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 const generateNumber = (min, max, exclude) => {
   min = Math.ceil(min);
@@ -68,11 +69,12 @@ const GameScreen = ({ userChoice, onGameOver }) => {
       <TitleText>Opponent's Guess</TitleText>
       <NumberContainer>{currentGuess}</NumberContainer>
       <Card style={styles.buttonContainer}>
-        <MainButton title="LOWER" onPress={() => nextGuessHandler('lower')} />
-        <MainButton
-          title="GREATER"
-          onPress={() => nextGuessHandler('greater')}
-        />
+        <MainButton onPress={() => nextGuessHandler('lower')}>
+          <Icon name="md-remove" size={24} color="white" />
+        </MainButton>
+        <MainButton onPress={() => nextGuessHandler('greater')}>
+          <Icon name="md-add" size={24} color="white" />
+        </MainButton>
       </Card>
     </View>
   );

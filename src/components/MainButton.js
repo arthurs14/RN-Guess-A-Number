@@ -3,11 +3,11 @@ import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 
 import Colors from '../../constants/colors';
 
-const MainButton = ({ title, onPress }) => {
+const MainButton = props => {
   return (
-    <TouchableOpacity activeOpacity={0.6} onPress={onPress}>
+    <TouchableOpacity activeOpacity={0.6} onPress={props.onPress}>
       <View style={styles.button}>
-        <Text style={styles.buttonText}>{title}</Text>
+        <Text style={styles.buttonText}>{props.children}</Text>
       </View>
     </TouchableOpacity>
   );
