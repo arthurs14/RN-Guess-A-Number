@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, StyleSheet, Image } from 'react-native';
+import { Text, View, StyleSheet, Image, Dimensions } from 'react-native';
 
 import TitleText from '../components/TitleText';
 import BodyText from '../components/BodyText';
@@ -48,13 +48,13 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   imageContainer: {
-    width: 300,
-    height: 300,
+    width: Dimensions.get('window').width * 0.7,
+    height: Dimensions.get('window').height * 0.33,
     borderRadius: 150,
     borderWidth: 3,
     borderColor: 'black',
     overflow: 'hidden',
-    marginVertical: 30,
+    marginVertical: Dimensions.get('window').height / 30,
   },
   image: {
     width: '100%',
@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
   },
   resultContainer: {
     marginHorizontal: 30,
-    marginVertical: 15,
+    marginVertical: Dimensions.get('window').height / 60,
     // use either margin to width
     //width: '80%',
   },
