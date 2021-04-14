@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Text, View, StyleSheet, Alert, ScrollView } from 'react-native';
+import { View, StyleSheet, Alert, ScrollView, FlatList } from 'react-native';
 
 import NumberContainer from '../components/NumberContainer';
 import Card from '../components/Card';
@@ -20,17 +20,31 @@ const generateNumber = (min, max, exclude) => {
   }
 };
 
-const renderListItem = (value, round) => (
-  <View key={value} style={styles.listItem}>
-    <BodyText>{`# ${round}`}</BodyText>
-    <BodyText>{value}</BodyText>
+// For ScrollView
+// const renderListItem = (value, round) => (
+//   <View key={value} style={styles.listItem}>
+//     <BodyText>{`# ${round}`}</BodyText>
+//     <BodyText>{value}</BodyText>
+//   </View>
+// );
+
+// For FlatList
+const renderListItem = (listLength, itemData) => (
+  <View style={styles.listItem}>
+    <BodyText>{`# ${listLength - itemData.index}`}</BodyText>
+    <BodyText>{itemData.item}</BodyText>
   </View>
 );
 
 const GameScreen = ({ userChoice, onGameOver }) => {
   const initialGuess = generateNumber(1, 100, userChoice);
   const [currentGuess, setCurrentGuess] = useState(initialGuess);
-  const [pastGuesses, setPastGuesses] = useState([initialGuess]);
+
+  // For ScrollView
+  // const [pastGuesses, setPastGuesses] = useState([initialGuess]);
+
+  // For FlatList
+  const [pastGuesses, setPastGuesses] = useState([initialGuess.toString()]);
 
   // does not re-render
   const currentLow = useRef(1);
@@ -70,7 +84,13 @@ const GameScreen = ({ userChoice, onGameOver }) => {
 
     setCurrentGuess(nextNumber);
     // setRounds(curRounds => curRounds + 1);
-    setPastGuesses(curPastGuesses => [nextNumber, ...curPastGuesses]);
+    // for ScrollView
+    // setPastGuesses(curPastGuesses => [nextNumber, ...curPastGuesses]);
+    // for FlatList
+    setPastGuesses(curPastGuesses => [
+      nextNumber.toString(),
+      ...curPastGuesses,
+    ]);
   };
 
   return (
@@ -86,11 +106,17 @@ const GameScreen = ({ userChoice, onGameOver }) => {
         </MainButton>
       </Card>
       <View style={styles.listContainer}>
-        <ScrollView contentContainerStyle={styles.list}>
+        {/* <ScrollView contentContainerStyle={styles.list}>
           {pastGuesses.map((guess, index) =>
             renderListItem(guess, pastGuesses.length - index),
           )}
-        </ScrollView>
+        </ScrollView> */}
+        <FlatList
+          keyExtractor={item => item}
+          data={pastGuesses}
+          renderItem={renderListItem.bind(this, pastGuesses.length)}
+          contentContainerStyle={styles.list}
+        />
       </View>
     </View>
   );
