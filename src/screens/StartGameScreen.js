@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   View,
   StyleSheet,
@@ -23,6 +23,9 @@ const StartGameScreen = ({ startGame }) => {
   const [enteredValue, setEnteredValue] = useState('');
   const [confirmed, setConfirmed] = useState(false);
   const [selectedNumber, setSelectedNumber] = useState();
+  const [buttonWidth, setButtonWidth] = useState(
+    Dimensions.get('window').width / 4,
+  );
 
   const numberInputHandler = inputText => {
     setEnteredValue(inputText.replace(/[^0-9]/g, ''));
@@ -32,6 +35,20 @@ const StartGameScreen = ({ startGame }) => {
     setEnteredValue('');
     setConfirmed(false);
   };
+
+  useEffect(() => {
+    const updateLayout = () => {
+      setButtonWidth(Dimensions.get('window').width / 4);
+    };
+
+    // set up a new one
+    Dimensions.addEventListener('change', updateLayout);
+
+    // clean up
+    return () => {
+      Dimensions.removeEventListener('change', updateLayout);
+    };
+  });
 
   const confirmInputHandler = () => {
     // eslint-disable-next-line radix
@@ -87,14 +104,14 @@ const StartGameScreen = ({ startGame }) => {
                 value={enteredValue}
               />
               <View style={styles.buttonContainer}>
-                <View style={styles.button}>
+                <View style={{ width: buttonWidth }}>
                   <Button
                     title="Reset"
                     onPress={resetInputHandler}
                     color={Colors.accent}
                   />
                 </View>
-                <View style={styles.button}>
+                <View style={{ width: buttonWidth }}>
                   <Button
                     title="Confirm"
                     onPress={confirmInputHandler}
@@ -135,11 +152,11 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     paddingHorizontal: 15,
   },
-  button: {
-    // To get better dimensions in android,
-    // width: 40%, // gets the same dimensions below
-    width: Dimensions.get('window').width / 4,
-  },
+  // button: {
+  //   // To get better dimensions in android,
+  //   // width: 40%, // gets the same dimensions below
+  //   width: Dimensions.get('window').width / 4,
+  // },
   buttonText: {
     fontFamily: 'OpenSans-Bold',
   },
