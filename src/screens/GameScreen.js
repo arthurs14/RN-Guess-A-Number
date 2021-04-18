@@ -53,9 +53,30 @@ const GameScreen = ({ userChoice, onGameOver }) => {
   // For FlatList
   const [pastGuesses, setPastGuesses] = useState([initialGuess.toString()]);
 
+  // Manage layout when orientation changes
+  const [availableDeviceWidth, setAvailableDeviceWidth] = useState(
+    Dimensions.get('window').width,
+  );
+  const [availableDeviceHeight, setAvailableDeviceHeight] = useState(
+    Dimensions.get('window').height,
+  );
+
   // does not re-render
   const currentLow = useRef(1);
   const currentHigh = useRef(100);
+
+  useEffect(() => {
+    const updateLayout = () => {
+      setAvailableDeviceWidth(Dimensions.get('window').width);
+      setAvailableDeviceHeight(Dimensions.get('window').height);
+    };
+
+    Dimensions.addEventListener('change', updateLayout);
+
+    return () => {
+      Dimensions.removeEventListener('change', updateLayout);
+    };
+  });
 
   // similar to componentDidMount?
   useEffect(() => {
@@ -102,11 +123,11 @@ const GameScreen = ({ userChoice, onGameOver }) => {
 
   let listContainerStyle = styles.listContainer;
 
-  if (Dimensions.get('window').width < 350) {
+  if (availableDeviceWidth < 350) {
     listContainerStyle = styles.listContainerBig;
   }
 
-  if (Dimensions.get('window').height < 500) {
+  if (availableDeviceHeight < 500) {
     return (
       <View style={styles.screen}>
         <TitleText>Opponent's Guess</TitleText>
@@ -183,7 +204,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around',
     alignItems: 'center',
-    width: '50%',
+    width: '70%',
   },
   listContainer: {
     flex: 1,
