@@ -106,6 +106,36 @@ const GameScreen = ({ userChoice, onGameOver }) => {
     listContainerStyle = styles.listContainerBig;
   }
 
+  if (Dimensions.get('window').height < 500) {
+    return (
+      <View style={styles.screen}>
+        <TitleText>Opponent's Guess</TitleText>
+        <View style={styles.controls}>
+          <MainButton onPress={() => nextGuessHandler('lower')}>
+            <Icon name="md-remove" size={24} color="white" />
+          </MainButton>
+          <NumberContainer>{currentGuess}</NumberContainer>
+          <MainButton onPress={() => nextGuessHandler('greater')}>
+            <Icon name="md-add" size={24} color="white" />
+          </MainButton>
+        </View>
+        <View style={listContainerStyle}>
+          {/* <ScrollView contentContainerStyle={styles.list}>
+            {pastGuesses.map((guess, index) =>
+              renderListItem(guess, pastGuesses.length - index),
+            )}
+          </ScrollView> */}
+          <FlatList
+            keyExtractor={item => item}
+            data={pastGuesses}
+            renderItem={renderListItem.bind(this, pastGuesses.length)}
+            contentContainerStyle={styles.list}
+          />
+        </View>
+      </View>
+    );
+  }
+
   return (
     <View style={styles.screen}>
       <TitleText>Opponent's Guess</TitleText>
@@ -148,6 +178,12 @@ const styles = StyleSheet.create({
     marginTop: Dimensions.get('window').height > 60 ? 20 : 5,
     width: 400,
     maxWidth: '90%',
+  },
+  controls: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+    width: '50%',
   },
   listContainer: {
     flex: 1,
