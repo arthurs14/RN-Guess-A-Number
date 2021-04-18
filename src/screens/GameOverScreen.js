@@ -15,32 +15,34 @@ import Colors from '../../constants/colors';
 
 const GameOverScreen = ({ rounds, userNumber, restart }) => {
   return (
-    <View style={styles.screen}>
-      <TitleText>Game Done!</TitleText>
-      <View style={styles.imageContainer}>
-        <Image
-          // use for local images
-          source={require('../assets/success.png')}
-          // use for web images
-          // source={{
-          //   uri:
-          //     'https://tgr.scdn2.secure.raxcdn.com/images/wysiwyg/_article/istockphoto-485966046-612x612.jpg',
-          // }}
-          style={styles.image}
-          resizeMode="cover"
-        />
+    <ScrollView>
+      <View style={styles.screen}>
+        <TitleText>Game Done!</TitleText>
+        <View style={styles.imageContainer}>
+          <Image
+            // use for local images
+            source={require('../assets/success.png')}
+            // use for web images
+            // source={{
+            //   uri:
+            //     'https://tgr.scdn2.secure.raxcdn.com/images/wysiwyg/_article/istockphoto-485966046-612x612.jpg',
+            // }}
+            style={styles.image}
+            resizeMode="cover"
+          />
+        </View>
+        <View style={styles.resultContainer}>
+          <BodyText style={styles.resultText}>
+            Your phone needed <Text style={styles.highlight}>{rounds}</Text>{' '}
+            rounds to guess the number{' '}
+            <Text style={styles.highlight}>{userNumber}</Text>.
+          </BodyText>
+        </View>
+        <View style={styles.button}>
+          <MainButton onPress={restart}>Play Again</MainButton>
+        </View>
       </View>
-      <View style={styles.resultContainer}>
-        <BodyText style={styles.resultText}>
-          Your phone needed <Text style={styles.highlight}>{rounds}</Text>{' '}
-          rounds to guess the number{' '}
-          <Text style={styles.highlight}>{userNumber}</Text>.
-        </BodyText>
-      </View>
-      <View style={styles.button}>
-        <MainButton onPress={restart}>Play Again</MainButton>
-      </View>
-    </View>
+    </ScrollView>
   );
 };
 
