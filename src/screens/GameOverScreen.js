@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: 'white',
-    paddingVertical: 10,
+    paddingVertical: 20,
   },
   button: {
     marginTop: 10,
