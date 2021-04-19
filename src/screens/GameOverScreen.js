@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
   imageContainer: {
     width: Dimensions.get('window').width * 0.7,
     height: Dimensions.get('window').height * 0.33,
-    borderRadius: 150,
+    borderRadius: (Dimensions.get('window').width * 0.7) / 2,
     borderWidth: 3,
     borderColor: 'black',
     overflow: 'hidden',
