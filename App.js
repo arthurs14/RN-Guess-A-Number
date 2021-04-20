@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, SafeAreaView } from 'react-native';
 
 import Header from './src/components/Header';
 import StartGameScreen from './src/screens/StartGameScreen';
@@ -35,10 +35,10 @@ const App = () => {
   }
 
   return (
-    <View style={styles.screen}>
+    <SafeAreaView style={styles.screen}>
       <Header title="Numbers" />
       {content}
-    </View>
+    </SafeAreaView>
   );
 };
 
